@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/Zarina/TaskNinja/internal/validator"
 	"time"
+	"log"
 )
 
 type Task struct {
@@ -38,6 +39,9 @@ func ValidateTask(v *validator.Validator, task *Task) {
 // Define a TaskModel struct type which wraps a sql.DB connection pool.
 type TaskModel struct {
 	DB *sql.DB
+	InfoLog  *log.Logger
+	ErrorLog *log.Logger
+	
 }
 
 // Add a placeholder method for inserting a new record in the task table.

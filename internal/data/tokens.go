@@ -6,6 +6,7 @@ import (
 	"crypto/sha256"
 	"database/sql"
 	"encoding/base32"
+	"log"
 	"github.com/Zarina/TaskNinja/internal/validator"
 	"time"
 )
@@ -72,6 +73,8 @@ func ValidateTokenPlaintext(v *validator.Validator, tokenPlaintext string) {
 // Define the TokenModel type.
 type TokenModel struct {
 	DB *sql.DB
+	InfoLog  *log.Logger
+	ErrorLog *log.Logger
 }
 
 // The New() method is a shortcut which creates a new Token struct and then inserts the

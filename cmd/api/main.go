@@ -11,7 +11,7 @@ import (
 
 	"github.com/Zarina/TaskNinja/internal/data"
 	"github.com/Zarina/TaskNinja/internal/jsonlog"
-	"github.com/Zarina/TaskNinja/internal/mailer"
+	// "github.com/Zarina/TaskNinja/internal/mailer"
 
 	// Import the pq driver so that it can register itself with the database/sql
 	// package. Note that we alias this import to the blank identifier, to stop the Go
@@ -59,14 +59,14 @@ type application struct {
 	config config
 	logger *jsonlog.Logger
 	models data.Models
-	mailer mailer.Mailer
+	// mailer mailer.Mailer
 	wg     sync.WaitGroup
 }
 
 func main() {
 	var cfg config
 
-	flag.IntVar(&cfg.port, "port", 1111, "API server port")
+	flag.IntVar(&cfg.port, "port", 8888, "API server port")
 	flag.StringVar(&cfg.env, "env", "development", "Environment (development|staging|production)")
 
 	// Use the value of the GREENLIGHT_DB_DSN environment variable as the default value
@@ -128,7 +128,7 @@ func main() {
 		config: cfg,
 		logger: logger,
 		models: data.NewModels(db),
-		mailer: mailer.New(cfg.smtp.host, cfg.smtp.port, cfg.smtp.username, cfg.smtp.password, cfg.smtp.sender),
+		// mailer: mailer.New(cfg.smtp.host, cfg.smtp.port, cfg.smtp.username, cfg.smtp.password, cfg.smtp.sender),
 	}
 	// Call app.serve() to start the server.
 	err = app.serve()

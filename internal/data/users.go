@@ -8,6 +8,7 @@ import (
 	"github.com/Zarina/TaskNinja/internal/validator"
 	"golang.org/x/crypto/bcrypt"
 	"time"
+	"log"
 )
 
 // Define a custom ErrDuplicateEmail error.
@@ -110,6 +111,8 @@ func ValidateUser(v *validator.Validator, user *User) {
 // Create a UserModel struct which wraps the connection pool.
 type UserModel struct {
 	DB *sql.DB
+	InfoLog  *log.Logger
+	ErrorLog *log.Logger
 }
 
 // Insert a new record in the database for the user. Note that the id, created_at and

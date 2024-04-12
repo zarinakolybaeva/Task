@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"github.com/lib/pq"
 	"time"
+	"log"
 )
 
 type Permissions []string
@@ -23,6 +24,8 @@ func (p Permissions) Include(code string) bool {
 // Define the PermissionModel type.
 type PermissionModel struct {
 	DB *sql.DB
+	InfoLog  *log.Logger
+	ErrorLog *log.Logger
 }
 
 // The GetAllForUser() method returns all permission codes for a specific user in a
